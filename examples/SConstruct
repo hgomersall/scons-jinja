@@ -1,0 +1,25 @@
+
+import os
+
+# Create the base environment with the tool added and some
+# suitable (optional) JINJA_ENVIRONMENT_VARS configured. 
+# JINJA_ENVIRONMENT_VARS does not need to be set here. If required,
+# it need only be set on each environment at *some point*.
+env = Environment(tools=['default', 'jinja'], 
+        JINJA_ENVIRONMENT_VARS={'trim_blocks': True})
+
+# A simple case
+jinja_env = env.Clone(JINJA_CONTEXT={'passed_in_str': 'Passed in string'})
+jinja_env.Jinja('rendered_templ.foo', 
+        os.path.join('src', 'templates', 'importer.foo.jinja'))
+
+# Now with templates in different directories
+jinja_env_2 = jinja_env.Clone(
+        JINJA_TEMPLATE_SEARCHPATH=[os.path.join('src', 'templates')])
+
+jinja_env_2.Jinja('another_rendered_templ.foo', 
+        os.path.join('src', 'additional_templates', 'an_includer.foo.jinja'))
+
+
+# Try with a SConscript and a variant directory
+SConscript('src/SConscript', exports='jinja_env', variant_dir='variant_foo')

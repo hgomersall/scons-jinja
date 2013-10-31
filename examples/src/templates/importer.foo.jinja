@@ -1,0 +1,12 @@
+
+{% from 'vars.foo.jinja' import bar %}
+Hello with {{ passed_in_str }}
+{% set foo = 'child.foo.jinja' %}
+{% set a_variable = 10 %}
+{% include foo %}
+
+{% set a_variable = 20 %}
+{% include bar %}
+
+{% set a_variable = 30 %}
+{% include 'child.foo.jinja' %}

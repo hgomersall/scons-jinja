@@ -1,0 +1,10 @@
+{% extends 'test.foo.jinja' %}
+
+{% block second_block %}
+        overwritten the second block with a variable: {{ a_variable }}
+{% endblock %}
+
+{% block top_block %}
+    overwritten the top block
+    {{ super() }}
+{% endblock %}

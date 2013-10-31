@@ -1,0 +1,24 @@
+Import('jinja_env')
+import os
+
+# Again, firstly with a simple case
+this_jinja_env = jinja_env.Clone(
+        JINJA_CONTEXT={'passed_in_str': 'A different passed in string'})
+
+this_jinja_env.Jinja('rendered_templ.foo', 
+        os.path.join('templates', 'importer.foo.jinja'))
+
+
+# Now with the templates in different paths.
+# Note that the path needs to be a path relative to SConstruct
+# root or an absolute path (done here with str(Dir('.').abspath)).
+# If the path is relative to this directory, a missing template
+# error will be raised.
+this_jinja_env_2 = jinja_env.Clone(
+        JINJA_CONTEXT={'passed_in_str': 'some different string'},
+        JINJA_TEMPLATE_SEARCHPATH=[
+            os.path.join(str(Dir('.').abspath), 'templates')])
+
+this_jinja_env_2.Jinja('another_rendered_templ.foo', 
+        os.path.join('additional_templates', 'an_includer.foo.jinja'))
+
