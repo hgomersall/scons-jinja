@@ -81,7 +81,7 @@ Examples
 --------
 
 An example of various usages is included in the `examples` directory. 
-To use is, you need to create an additional directory 
+To use this, you need to create an additional directory 
 `examples/site_scons/site_tools` and copy the tool into that directory.
 
 Run `scons` inside the examples directory. It should generate various 
