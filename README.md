@@ -18,9 +18,17 @@ A few examples are included (see below for how to use them).
 Loading the tool
 ----------------
 
-To enble the tool, put the directory `jinja` into your tool path. In the 
-case of a specific project, this is something like `site_scons/site_tools/` 
+To enble the tool, copy `__init__.py` in this directory to a directory `jinja` 
+in your tool path. In the case of a specific project, the tool path is 
+something like `site_scons/site_tools/` 
 at the same level as the project `SConstruct` file.
+
+You can clone the repository directly into your `site_tools` directory with
+
+    git clone https://github.com/hgomersall/scons-jinja jinja
+
+(which creates a new directory `jinja` containing the repository wherever
+you happen to be when the command is run).
 
 Next, add the tool to an environment with something like the following:
 
