@@ -90,7 +90,8 @@ Examples
 
 An example of various usages is included in the `examples` directory. 
 To use this, you need to create an additional directory 
-`examples/site_scons/site_tools` and copy the tool into that directory.
+`examples/site_scons/site_tools/jinja` and copy `__init__.py` into 
+that directory.
 
 Run `scons` inside the examples directory. It should generate various 
 outputs in various different ways.
